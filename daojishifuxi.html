@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script>
+        	var targetTime=new Date(2017,9,1,0,0,0).getTime();
+        	function getDisTime()
+        	{
+        		var nowTime=Date.now();
+        		var disTime=targetTime-nowTime;
+        		var disDay=Math.floor(disTime/1000/60/60/24);
+        		var disHour=Math.floor((disTime/1000/60/60)-disDay*24);
+        		var disMinute=Math.floor((disTime/1000/60)-disDay*24*60)%60;
+        		var disSeconds=Math.floor(disTime/1000)%60;
+        		document.close();
+        		document.write("距离2017-9-1 0:0:0: 还剩"+disDay+"天"+disHour+"小时"+disMinute+"分"+disSeconds+"秒");
+        	}
+            setInterval(getDisTime, 1000);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

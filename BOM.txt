@@ -1,0 +1,208 @@
+ECMAScript是统一语法标准，几乎不存在兼容性问题
+BOM:浏览器对象模型，这个是各个浏览器自己提供的功能。兼容性问题最突出。
+DOM：文档对象模型，兼容性问题比较少
+	兼容性问题：BOM>DOM>ECMA；
+
+BOM有一个顶层对象。是window。任何的全局的变量和全局函数实质都是window的一个属性。
+	function show(){
+		alert(1)	
+	}
+	window.show()
+
+	访问一个不存在的变量会报错，访问一个不存在的属性不会报错而是undefined
+=================================================================================>
+BOM是相对于页面窗口来说，一个窗口是一个window。而不是指整个浏览器一个window.	
+
+
+BOM:
+	history：浏览器窗口历史记录
+		用来访问和操作浏览器的历史记录，最常见的是前进和后退.该历史记录不是指浏览器所有已经产生的历史记录，而是当前窗口打开以后操作产生的历史记录.
+		length属性，返回当前网页打开以后产生的历史记录的条目。
+		back()：加载浏览器历史列表中的前一个URL。go(-1)
+			onclick="window.history.back()"
+		forward()：加载浏览器历史列表中的下一个URL。go(1)
+			onclick="window.history.forward()"
+		go()：加载浏览器历史列表中的指定URL。 
+			最灵活的操作历史记录的方法，既可以前进也可以后退，还可以刷新
+			go(-1) 后退一个历史记录，go(-3)后退三个历史记录
+			go(1) 前进一个历史记录，go(3)前进三个历史记录
+			go(0) 刷新
+=================================================================================>		
+	location：浏览器窗口的访问地址信息
+		location的常用属性:
+			href：设置或返回当前URL。
+				获取当前的URL地址或者进行页面跳转，相当于a标签
+				onclick="window.location.href=
+				'http://www.baidu.com'"
+			hash：设置或返回URL中的锚名。
+				hash的改变页面不会刷新，hash正确与否不会影响网页的正常显示
+				有值就是hash定位
+				无值就是获取当前hash值
+				URL中#号后面跟的就是哈希，用来定位网页位置。
+			host：设置或返回主机名和端口号。
+				 console.log(window.location.host)
+			port：设置或返回端口号。
+				console.log(window.location.port)
+			hostname：设置或返回主机名。
+				console.log(window.location.hostname)
+			pathname：设置或返回URL的路径部分。
+				console.log(window.location.pathname);
+				返回从根目录开始到当前HTML文件的路径
+			protocol：设置或返回URL的协议。计算机通信网络中两台计算机之间进行通信所必须共同遵守的规定或规则，超文本传输协议(HTTP)是一种通信协议，它允许将超文本标记语言(HTML)文档从Web服务器传送到客户端的浏览器。
+			search：设置或返回URL的参数部分。
+				参数的改变页面不会刷新，参数正确与否不会影响网页的                                正常显示
+=================================================================================>
+				参数是用来在页面间传递信息 a.html向b页面传递信息
+				URL中问号后面的部分
+				console.log(window.location.search);
+		方法：
+			reload:刷新。也可以使用go(0)
+			
+	navigator：浏览器的版本信息
+		appName：浏览器名称。  除IE以外的浏览器返回结果都是Netscape，为了兼容性考虑，Netscape是最早出现的浏览器，后来被IE给打败了
+		appCodeName：浏览器代码名称。 为了兼容考虑，返回值都是Mozilla
+		appVersion：浏览器主版本及平台信息。
+		userAgent： HTTP 请求的用户代理头的值（appCodeName 的值之后加上斜线和 appVersion 的值构成）
+			window.navigator.userAgent//最完整的的浏览器信息集合，这个是常用方法。
+			 
+		cookieEnabled：浏览器是否启用cookie。 
+		platform：操作系统平台。 
+=================================================================================>		
+	screen：用户屏幕信息
+		width：屏幕当前分辨率的宽度。
+			是指屏幕当前的分辨率而不是实际分辨率.
+			console.log(window.screen.width)
+		height：屏幕当前分辨率的高度。
+			是指屏幕当前的分辨率而不是实际分辨率.
+			console.log(window.screen.height)
+			
+			availWidth：屏幕当前分辨率的宽度，不包括任务栏。 avail有效的意思
+			console.log(window.screen.availWidth)
+		availHeight：屏幕当前分辨率的高度，不包括任务栏。
+			console.log(window.screen.availHeight)
+
+=================================================================================>
+open(url,method,option)打开新的浏览器窗口。现代开发几乎已经废弃，使用DIV模拟弹窗
+	url参数表示要打开的页面的路径(相对路径绝对路径都可以)
+	method，打开方式，类似a标签，值可以是_parent、_blank、_self 
+	option:新页面打开的配置，可以在这里设置新窗口的宽高左立顶部左部的位置。
+	window.open('test.html','_blank','width=200,height=100, top=200, left=200,scrollbars=no');
+
+close()：关闭浏览器窗口。
+	脚本只能关闭通过open方法打开的页面.
+	window.close()
+=================================================================================>
+setTimeout单次定时器，延时器。经过多少秒再执行函数;
+	setTimeout(function(){},time);
+	第一个参数是函数，可以是匿名函数，也可以是函数指针(函数名)。
+	第二个参数经过多少时间，单位为毫秒。
+	
+	setTimeout(function(){
+		alert(1)	
+	},1000)
+	经过1秒，执行匿名函数。
+	
+	function show(){
+		alert(1)	
+	}
+	setTimeout(show(),1000)// 错误的
+	setTimeout(show,1000)//函数指针不能加括号，否则是直接执行函数
+=================================================================================>
+setInterval:多次定时器，可以无限间隔执行。
+	用法等同于setTimeout，区别在于timeout只执行一次，而interval会无限执行。
+	setInterval(function(){
+		alert(1)
+	},2000)
+	
+	function show(){
+		alert(1)	
+	}
+	setInterval(show(),1000)// 错误的
+	setInterval(show,1000)//函数指针不能加括号，否则是直接执行函数
+=================================================================================>	
+setTimeout虽然只会执行一次，但是他执行完以后，并不会被销毁，而是会长留在内存当中，所以处于性能考虑，进行人工销毁。
+
+setInterval会一直执行，如果希望他停止执行，也应当进行销毁。
+
+	怎样销毁定时器：先把定时器赋给一个变量，然后销毁这个变量
+
+	使用clearTimeout销毁setTimeout
+	使用clearInterval销毁setInterval;
+	
+	<script>
+	var timer=setTimeout(function(){
+		alert(1)
+	},500)
+	clearTimeout(timer)
+	
+	clearInterval并不是清除这一次的定时器执行，而是停止下一次的执行。
+	
+	var n=0;
+	var timer=setInterval(function(){
+		if(n===3){
+			clearInterval(timer)	
+		}else{
+			n++
+			alert(n)
+		}
+	},1000)
+=================================================================================>	
+练习：
+1、弹出广告 - 页面加载时，弹出新的窗口或标签显示广告页面。
+	window.open("test.html","_blank","width=400,height=200")
+=================================================================================>
+2、用户点击“登录”时，弹出确认对话框，如果用户点击”确定“，继续登录，否则取消登录。
+	<button onclick="login()">登录</button>
+	function login(){
+		var boo=window.confirm("是否登录");
+		if(boo){
+			//登录
+			alert("继续登录")
+		}else{
+			//不登录
+			alert("取消登录")
+		}
+	}
+=================================================================================>
+3、在控制台打印显示当前时间，并每秒钟更新一次。
+	 var timer=setInterval(function(){
+		console.log(new Date().toJSON())	
+	},1000)
+	 
+=================================================================================>	 
+4、点击页面上的“登录”按纽，2秒后自动跳转到新的页面。
+	 <button onclick="setTimeout(function(){window.location.href='http://www.baidu.com'},2000)">登录</button>
+=================================================================================>	 
+5、查找资料，如何判断当前浏览器是否为IE浏览器？
+	var naviInfo=window.navigator.userAgent;
+	var idx=naviInfo.toLowerCase().indexOf("ie");
+	if(idx>-1){
+		alert("IE")	
+	}else{
+		alert("非IE")		
+	}
+=================================================================================>
+6、页面加载时，检查屏幕分辨率，如果宽度小于1440，则提示用户最佳分辨率应在1440以上。
+	var width=window.screen.width;
+	if(width<1440){
+		alert("字体太小，放大点吧")	
+	}
+=================================================================================>
+7、做一个倒计时功能，设定目标时间，计算距离现在还剩多少天多少分钟多少秒：
+在控制台打印
+var targetTime=new Date(2018,1,1,0,0,0).getTime(); //1970 1 1
+
+function getDisTime(){
+	var nowTime=Date.now();//1970 1 1
+	var disTime=targetTime-nowTime;
+	var disDay=Math.floor(disTime/1000/60/60/24)
+	var disHour=Math.floor(disTime/1000/60/60)-disDay*24
+	var disMinutes=(Math.floor(disTime/1000/60)-disDay*24*60)%60
+	var disSeconds=Math.floor(disTime/1000)%60
+	
+	document.close();
+	document.write("距离2018-1-1 0:0:0还剩"+disDay+"天"+disHour+"小时"+disMinutes+"分钟"+disSeconds+"秒")
+	
+}
+setInterval(getDisTime,1000)
+=================================================================================>

@@ -1,0 +1,26 @@
+<!-- /*做一个倒计时功能，设定目标时间，计算距离现在还剩多少天多少分钟多少秒： -->
+<!-- 在控制台打印*/ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script>
+		var targetTime=new Date(2018,1,1,0,0,0).getTime(); //1970 1 1
+
+		function getDisTime(){
+			var nowTime=Date.now();//1970 1 1
+			var disTime=targetTime-nowTime;
+			var disDay=Math.floor(disTime/1000/60/60/24)
+			var disHour=Math.floor(disTime/1000/60/60)-disDay*24
+			var disMinutes=(Math.floor(disTime/1000/60)-disDay*24*60)%60
+			var disSeconds=Math.floor(disTime/1000)%60
+			document.close();
+			document.write("距离2018-1-1 0:0:0还剩"+disDay+"天"+disHour+"小时"+disMinutes+"分钟"+disSeconds+"秒")
+			
+		}
+		setInterval(getDisTime,1000)
+		</script>
+    </head>
+    <body>
+    </body>
+</html>
