@@ -17,8 +17,9 @@
 //语句在不同行分号省略不报错，但是建议每条后面都写分号
 //var box="李炎恢";var age=28;alert(box);alert(age);
 
-var box="李炎恢",
+/*var box="李炎恢",
        age=28,
 	   height=178,
 	   width;
 alert(width)   
+*/

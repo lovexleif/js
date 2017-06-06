@@ -6,30 +6,59 @@
 <script type="text/javascript" src="3_1.js"></script>
 </head>
 <body>
-区分大小写：text和Text是两种不同的标识符<br />
-标识符组成的开头 ，a、_、 $<br />
-其它标识符组成  a、_、 $、数字<br />
-不能把关键字，保留字，true flase null 标识符<br />
+<textarea style="width:1000px;height:1000px">
+区分大小写：text和Text是两种不同的标识符
+标识符组成的开头 ，a、_、 $
+其它标识符组成  a、_、 $、数字
+不能把关键字，保留字，true flase null 标识符
 
 
-单行注释 //-------<br />
-多行块级注释<br />
- /*<br />
- -----------<br />
-------------<br />
-----------<br />
-*/<br />
-<br /><br /><br />
-字面量<br />
-100  数字字面量<br />
-"李炎恢" 字符串字面量<br />
-false  布尔值字面量 true<br />
-/js/gi     正则表达式的字面量<br />
-null  对象<br />
+单行注释 //-------
+多行块级注释
+ /*
+ -----------
+------------
+----------
+*/
+
+字面量
+100  数字字面量
+"李炎恢" 字符串字面量
+false  布尔值字面量 true
+/js/gi     正则表达式的字面量
+null  对象
 
 {x:1,y:2}  对象字面量表达式
-<br />
+
 {1,2,3,4}   数组字面量表达式
-<br /> 
+
+
+//var 是一个操作符  
+//var box  声明变量
+//var box =100  声明变量并初始化
+//alert(box)  以弹窗的方式输出
+
+
+//var  boxString="李炎恢";
+//boxString="lee"
+//alert(boxString);
+
+
+//作用域的问题
+//box="李炎恢"
+//alert(box);
+
+//语句在同一行  分号不能省略
+//语句在不同行分号省略不报错，但是建议每条后面都写分号
+//var box="李炎恢";var age=28;alert(box);alert(age);
+
+/*var box="李炎恢",
+       age=28,
+	   height=178,
+	   width;
+alert(width)   
+*/
+ </textarea>
+ <!--<textarea name="textarea" id="" cols="30" rows="10"></textarea>-->
 </body>
 </html>
